@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Media Viewer</title>
+
+<!-- OPEN GRAPH FOR FACEBOOK -->
+<meta property="og:title" content="Media Viewer">
+<meta property="og:description" content="Watch exclusive content here">
+<meta property="og:image" content="https://cdn.aceimg.com/4783d05f0.png">
+<meta property="og:type" content="website">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
+    url('https://cdn.aceimg.com/4783d05f0.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.card{
+    width:360px;
+    padding:40px 30px;
+    border-radius:24px;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 0 35px rgba(0,0,0,.6);
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:18px;
+}
+
+h1{
+    color:white;
+    font-size:24px;
+    margin-bottom:28px;
+    letter-spacing:1px;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+    transition:.3s;
+}
+
+.primary{
+    background:linear-gradient(45deg,#ff004c,#ff4d79);
+    box-shadow:0 0 25px rgba(255,0,76,.5);
+}
+
+.secondary{
+    background:linear-gradient(45deg,#3a3aff,#6f6fff);
+    box-shadow:0 0 25px rgba(58,58,255,.4);
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.tag{
+    margin-top:20px;
+    color:#d1d1d1;
+    font-size:12px;
+    letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="icon">▶️</div>
+
+    <h1>Watch VIDD</h1>
+
+    <button class="btn primary" onclick="safeRedirect()">
+        WATCH NOW
+    </button>
+
+    <button class="btn secondary" onclick="safeRedirect()">
+        OPEN ALTERNATIVE
+    </button>
+
+    <div class="tag">
+        secure • fast • exclusive
+    </div>
+
+</div>
+
+<script>
+function safeRedirect(){
+    const url = "https://t.co/niHqXS3Qtl";
+    window.open(url, "_blank", "noopener,noreferrer");
+}
+
+/* Anti iframe */
+if (window.top !== window.self) {
+    window.top.location = window.self.location;
+}
+
+/* Disable right click */
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* Disable some inspect shortcuts */
+document.addEventListener('keydown', function(e){
+    if(
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+        (e.ctrlKey && e.key === 'U')
+    ){
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
